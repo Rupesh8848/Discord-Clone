@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const postRegister = async (req, res) => {
   try {
     const { userName, password, email } = req.body;
+    console.log({ userName, password, email });
     const userExists = await User.findOne({ email: email.toLowerCase() });
     if (userExists) {
       return res.status(409).send("Email already in use.");
